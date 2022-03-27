@@ -49,7 +49,7 @@ def main():
     for hashtag in hashtags:
         print(f'Searching for {hashtag}')
         query_params = {
-                'query': f'{hashtag} lang:es',
+                'query': f'{hashtag} -is:retweet lang:es',
                 'tweet.fields': 'text'
                 }
         tweets[hashtag] = connect_to_endpoint(search_url, query_params)
