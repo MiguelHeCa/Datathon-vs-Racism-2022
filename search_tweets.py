@@ -1,6 +1,7 @@
 import requests
-import os
+import pickle
 import json
+import os
 
 from datetime import datetime
 from pathlib import Path
@@ -15,17 +16,17 @@ search_url = "https://api.twitter.com/2/tweets/search/recent"
 # Optional params: start_time,end_time,since_id,until_id,max_results,next_token,
 # expansions,tweet.fields,media.fields,poll.fields,place.fields,user.fields
 
-hashtags = [
-        '#MenasFuera', 
-        '#PrimeroVox',
-        '#TeamVox',
-        '#SoloQuedaVox',
-        '#VoxExtremaNecesidad',
-        '#MenasNo',
-        '#Stopislam',
-        '#morosfuera'
-        ]
-
+# hashtags = [
+#         '#MenasFuera', 
+#         '#PrimeroVox',
+#         '#TeamVox',
+#         '#SoloQuedaVox',
+#         '#VoxExtremaNecesidad',
+#         '#MenasNo',
+#         '#Stopislam',
+#         '#morosfuera'
+#         ]
+ 
 
 def bearer_oauth(r):
     """
@@ -45,14 +46,18 @@ def connect_to_endpoint(url, params):
 
 
 def main():
+    # Load terms
+    with open(Path('data', 'tweets_lookup_terms.pickle'), 'rb') as f:
+        terms = pickle.load(f)
+
     tweets = {}
-    for hashtag in hashtags:
-        print(f'Searching for {hashtag}')
+    for term in terms:
+        print(f'Searching for {term}')
         query_params = {
-                'query': f'{hashtag} -is:retweet lang:es',
+                'query': f'{term} -is:retweet lang:es',
                 'tweet.fields': 'text'
                 }
-        tweets[hashtag] = connect_to_endpoint(search_url, query_params)
+        tweets[term] = connect_to_endpoint(search_url, query_params)
 
     timestamp = datetime.now().strftime("%Y_%m_%d-%I_%M_%S_%p")
 
