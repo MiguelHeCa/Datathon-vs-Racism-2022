@@ -1,17 +1,27 @@
 # Datathon-vs-Racism-2022
 
-[Open colab](https://colab.research.google.com/drive/14SvMVg6vzlKjLmPJA0g91RQsoXRT4kjj)
+[Datathon Against Racism - BCN Analytics 2022](https://bcnanalytics.com/datathon/)
 
-Datathon Against Racism - BCN Analytics 2022
+Group name: **!Another DS Group**
 
-[Trello](https://trello.com/b/rMKoZ5Y0/datathon-against-racism)
+(Not Another Data Science Group)
+
+Winners of Best Insights!!!! 
+
+## MVP at Hugginface
+
+[BETO model sample](https://huggingface.co/jaumefib/datathon-against-racism)
 
 ## Insights
 
-* Topics like economy + racism would not be reflected in tweets datasets since the Twitter API gives 1% of a non-representative universe of tweets. Furthermore, when searching tweets, only using an Academic Account is possible to retrieve all tweets, but for Essential and Expanded accounts is only allowd a 10-days window, producing inherent bias that cannot be solved in an easy way.
-* We should classify `unknown` in labels predicted by BETO and then add them to training, identifying by a special tag.
-* Generating new classifications to see if non classified models are falling in the **mild** cases or non-consensus cases.
- 
+* A lot of doubt in defining what is racism even by professionals.
+* In Spain racism seems to be related with immigration while in LatinoAmerica racism is associated with discrimination by race.
+* The nationality that is most discriminated is moroccan and there is a general negative attitude towards muslims.
+* People of discriminated nationalities are recurrently associated by Spaniards to violence, illegal immigration, illegal house occupants and poverty.
+* Better division of train/val/test data.
+
+
+## Rules for analysing consensus
 
 | Case                 | Label             |
 |----------------------|-------------------|
